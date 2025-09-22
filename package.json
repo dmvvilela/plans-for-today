@@ -1,0 +1,32 @@
+{
+  "name": "plans-for-today-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plans For Today - A simple, beautiful whiteboard app for daily planning",
+  "author": "Daniel Vilela",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:app": "npm run dev --workspace=apps/electron-app",
+    "dev:web": "npm run dev --workspace=apps/landing-page",
+    "dev": "npm run dev:web & npm run dev:app",
+    "build:app": "npm run electron:build --workspace=apps/electron-app",
+    "build:web": "npm run build --workspace=apps/landing-page",
+    "build": "npm run build:web && npm run build:app",
+    "electron": "npm run electron --workspace=apps/electron-app",
+    "preview:web": "npm run preview --workspace=apps/landing-page"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/plans-for-today.git"
+  },
+  "keywords": [
+    "todo",
+    "planning",
+    "whiteboard",
+    "electron",
+    "productivity"
+  ]
+}
