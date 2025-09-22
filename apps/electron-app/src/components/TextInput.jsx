@@ -8,6 +8,13 @@ const TextInput = () => {
   const { addPlan, editingId } = useBoardStore();
 
   useEffect(() => {
+    // Focus input whenever isTyping becomes true
+    if (isTyping && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isTyping]);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       // Don't trigger new input when editing existing items
       if (editingId !== null) return;
@@ -15,36 +22,48 @@ const TextInput = () => {
       // Don't trigger for input fields
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-      // Start typing when any letter is pressed
-      if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        setIsTyping(true);
-        inputRef.current?.focus();
-      }
-
       // Cancel typing on Escape
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && isTyping) {
         setIsTyping(false);
         setInputText('');
+        return;
+      }
+
+      // Start typing when any letter/number is pressed
+      if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && !isTyping) {
+        e.preventDefault(); // Prevent the character from being typed twice
+        // Only capture first character when not already typing
+        setIsTyping(true);
+        setInputText(e.key);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [editingId]);
+  }, [editingId, isTyping]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputText.trim()) {
       addPlan(inputText.trim());
-      setInputText('');
+      // Hide immediately
       setIsTyping(false);
+      setInputText('');
+      // Blur without delay
+      inputRef.current?.blur();
     }
   };
 
   const handleBlur = () => {
+    // Only hide if empty
     if (!inputText.trim()) {
       setIsTyping(false);
+      setInputText('');
     }
+  };
+
+  const handleChange = (e) => {
+    setInputText(e.target.value);
   };
 
   return (
@@ -54,10 +73,11 @@ const TextInput = () => {
           ref={inputRef}
           type="text"
           value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
+          onChange={handleChange}
           onBlur={handleBlur}
           placeholder="Type to add a plan..."
           className="text-input"
+          autoFocus={isTyping}
         />
       </form>
       {isTyping && (
