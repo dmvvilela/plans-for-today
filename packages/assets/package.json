@@ -1,0 +1,14 @@
+{
+  "name": "@plans-for-today/assets",
+  "version": "1.0.0",
+  "description": "Shared assets for Plans For Today",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "logos",
+    "icons",
+    "screenshots",
+    "colors.js",
+    "README.md"
+  ]
+}

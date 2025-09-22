@@ -6,7 +6,8 @@
   "author": "Daniel Vilela",
   "license": "MIT",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "dev:app": "npm run dev --workspace=apps/electron-app",
