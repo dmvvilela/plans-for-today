@@ -1,0 +1,235 @@
+---
+
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="logo-area">
+        <div class="whiteboard-icon">
+          <span class="plans">PLANS</span>
+          <span class="for">FOR</span>
+          <span class="today">TODAY</span>
+        </div>
+      </div>
+
+      <h1 class="headline">
+        Your daily planning, <span class="handwritten emphasis">simplified</span>
+      </h1>
+
+      <p class="subheadline">
+        No subscriptions. No cloud sync. No AI. No complexity.<br>
+        Just a beautiful whiteboard for your daily plans.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="#download" class="btn-primary">
+          Download for Mac
+        </a>
+        <a href="#demo" class="btn-secondary">
+          See it in action
+        </a>
+      </div>
+
+      <div class="features-preview">
+        <div class="feature-tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Free forever
+        </div>
+        <div class="feature-tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Works offline
+        </div>
+        <div class="feature-tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Your data stays yours
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--whiteboard) 0%, #f0ede3 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, var(--speckle) 1px, transparent 1px),
+      radial-gradient(circle at 60% 30%, var(--speckle) 0.5px, transparent 0.5px),
+      radial-gradient(circle at 80% 70%, var(--speckle) 0.5px, transparent 0.5px);
+    background-size: 200px 200px, 150px 150px, 100px 100px;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .whiteboard-icon {
+    display: inline-flex;
+    gap: 0.5rem;
+    padding: 1.5rem 2.5rem;
+    background: white;
+    border: 3px solid var(--blue-border);
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 2px var(--dark-blue),
+      0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    transform: rotate(-1deg);
+  }
+
+  .plans {
+    color: var(--yellow);
+    text-shadow: 2px 2px 0 var(--black);
+  }
+
+  .for {
+    color: var(--orange);
+    text-shadow: 2px 2px 0 var(--black);
+  }
+
+  .today {
+    color: var(--green);
+    text-shadow: 2px 2px 0 var(--dark-green);
+  }
+
+  .headline {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin: 1rem 0;
+    color: var(--dark-blue);
+    line-height: 1.2;
+  }
+
+  .emphasis {
+    color: var(--orange);
+    font-size: 1.2em;
+    transform: rotate(-2deg);
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--yellow);
+    text-underline-offset: 0.2em;
+  }
+
+  .subheadline {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #666;
+    margin: 2rem auto 3rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: white;
+    box-shadow: 0 4px 16px rgba(228, 116, 40, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(29, 60, 71, 0.3);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--dark-blue);
+    border: 2px solid var(--blue-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--whiteboard);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(57, 124, 146, 0.2);
+  }
+
+  .features-preview {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .feature-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dark-green);
+    font-weight: 500;
+  }
+
+  .feature-tag svg {
+    color: var(--green);
+  }
+
+  @media (max-width: 768px) {
+    .whiteboard-icon {
+      font-size: 1.5rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

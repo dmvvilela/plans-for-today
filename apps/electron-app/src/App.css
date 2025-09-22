@@ -1,0 +1,457 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@400;700&family=Architects+Daughter&family=Indie+Flower&family=Permanent+Marker&family=Shadows+Into+Light&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Caveat", cursive;
+  overflow: hidden;
+  user-select: none;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #fafaf8;
+}
+
+/* Controls */
+.controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  z-index: 100;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-group svg {
+  color: #666;
+}
+
+/* Color Picker */
+.color-options {
+  display: flex;
+  gap: 8px;
+}
+
+.color-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+}
+
+.color-btn.active {
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Font Switcher */
+.font-options {
+  display: flex;
+  gap: 8px;
+}
+
+.font-btn {
+  padding: 4px 12px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.font-btn:hover {
+  background: #e0e0e0;
+}
+
+.font-btn.active {
+  background: #333;
+  color: white;
+}
+
+/* Action Buttons */
+.action-btn {
+  padding: 8px 12px;
+  height: 36px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.action-btn:hover {
+  background: #e0e0e0;
+}
+
+.action-btn.save {
+  background: #333;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.action-btn.save:hover {
+  background: #444;
+}
+
+.action-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.action-btn:disabled:hover {
+  background: #f0f0f0;
+}
+
+.action-btn.active-mode {
+  background: #3498db;
+  color: white;
+}
+
+.action-btn.active-mode:hover {
+  background: #2980b9;
+}
+
+.action-btn.active-eraser {
+  background: #ff6b6b;
+  color: white;
+}
+
+.action-btn.active-eraser:hover {
+  background: #ff5252;
+}
+
+.action-btn.today {
+  background: #e67e22;
+  color: white;
+}
+
+.action-btn.today:hover {
+  background: #d35400;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: #ddd;
+  margin: 0 8px;
+}
+
+/* Font Dropdown */
+.font-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.font-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  height: 36px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 130px;
+}
+
+.font-dropdown-trigger:hover {
+  background: #e0e0e0;
+}
+
+.font-dropdown-trigger span {
+  flex: 1;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.font-dropdown-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 8px;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 200;
+}
+
+.font-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.font-dropdown-item:hover {
+  background: rgba(52, 152, 219, 0.1);
+}
+
+.font-dropdown-item.active {
+  background: rgba(52, 152, 219, 0.2);
+  color: #2c3e50;
+}
+
+/* Text Input */
+.text-input-wrapper {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 101;
+}
+
+.text-input-wrapper.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.text-input {
+  width: 400px;
+  padding: 12px 20px;
+  font-size: 24px;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #333;
+  border-radius: 12px;
+  outline: none;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.input-hint {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+/* Drag Bar */
+.drag-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  -webkit-app-region: drag;
+  cursor: move;
+}
+
+.drag-bar.visible {
+  opacity: 1;
+}
+
+.drag-bar:hover {
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 1;
+}
+
+.drag-bar svg {
+  color: #666;
+  pointer-events: none;
+}
+
+/* Ensure other interactive elements can't be dragged */
+.controls,
+.text-input-wrapper,
+button,
+input {
+  -webkit-app-region: no-drag;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 12px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2000;
+  animation: slideIn 0.3s ease-out;
+  font-size: 16px;
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+}
+
+.toast.success {
+  border-left: 4px solid #27ae60;
+  color: #27ae60;
+}
+
+.toast.error {
+  border-left: 4px solid #e74c3c;
+  color: #e74c3c;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Calendar Picker */
+.calendar-picker {
+  position: relative;
+}
+
+.calendar-btn {
+  position: relative;
+  background: #e67e22 !important;
+  color: white !important;
+}
+
+.calendar-btn svg {
+  color: white !important;
+}
+
+.calendar-btn:hover {
+  background: #d35400 !important;
+}
+
+.date-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-dropdown {
+  position: fixed;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  z-index: 300;
+  min-width: 280px;
+}
+
+/* Calendar styles override */
+.calendar-dropdown .rdp {
+  --rdp-accent-color: #e67e22;
+  --rdp-accent-color-dark: #d35400;
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+}
+
+.calendar-dropdown .rdp-day {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.calendar-dropdown .rdp-day_button {
+  width: 32px;
+  height: 32px;
+}
+
+.calendar-dropdown .rdp-day_button:hover {
+  background: rgba(52, 152, 219, 0.1);
+}
+
+.calendar-dropdown .rdp-day_selected {
+  background: #e67e22 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.calendar-dropdown .rdp-day_selected .rdp-day_button {
+  color: white !important;
+}
+
+.calendar-dropdown .today-day {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+/* Calendar month navigation arrows */
+.calendar-dropdown .rdp-nav_button {
+  color: #e67e22 !important;
+}
+
+.calendar-dropdown .rdp-nav_button:hover {
+  background: rgba(230, 126, 34, 0.1) !important;
+  color: #d35400 !important;
+}
+
+.calendar-dropdown .rdp-nav_button svg {
+  fill: #e67e22 !important;
+  color: #e67e22 !important;
+}
