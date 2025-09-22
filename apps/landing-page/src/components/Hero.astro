@@ -6,11 +6,7 @@
   <div class="container">
     <div class="hero-content">
       <div class="logo-area">
-        <div class="whiteboard-icon">
-          <span class="plans">PLANS</span>
-          <span class="for">FOR</span>
-          <span class="today">TODAY</span>
-        </div>
+        <img src="/icon.png" alt="Plans For Today" class="logo-image" />
       </div>
 
       <h1 class="headline">
@@ -94,36 +90,25 @@
     text-align: center;
   }
 
-  .whiteboard-icon {
-    display: inline-flex;
-    gap: 0.5rem;
-    padding: 1.5rem 2.5rem;
-    background: white;
-    border: 3px solid var(--blue-border);
-    border-radius: 12px;
-    box-shadow:
-      0 0 0 2px var(--dark-blue),
-      0 8px 32px rgba(0, 0, 0, 0.1);
+  .logo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2rem;
-    font-family: 'Caveat', cursive;
-    font-size: 2rem;
-    font-weight: 700;
-    transform: rotate(-1deg);
   }
 
-  .plans {
-    color: var(--yellow);
-    text-shadow: 2px 2px 0 var(--black);
+  .logo-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+    display: block;
   }
 
-  .for {
-    color: var(--orange);
-    text-shadow: 2px 2px 0 var(--black);
-  }
-
-  .today {
-    color: var(--green);
-    text-shadow: 2px 2px 0 var(--dark-green);
+  .logo-image:hover {
+    transform: rotate(0deg) scale(1.05);
   }
 
   .headline {
